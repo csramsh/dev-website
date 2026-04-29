@@ -1,118 +1,207 @@
-# Accessible Astro Starter
+# CSRA Mesh — Website Guide
 
-<img width="1200" height="627" alt="social-preview-image" src="https://github.com/user-attachments/assets/bcd886fb-dd70-4a81-ac73-e138f3ce8d35" />
+This is the source code for the CSRA Mesh community website. It's a static site, meaning it's just files — no database, no server. When changes are pushed to GitHub, the site automatically builds and publishes to GitHub Pages within a couple of minutes.
 
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
+---
 
-A ready-to-use, SEO and accessibility-focused Astro starter template. Built with modern web standards, WCAG 2.2 AA guidelines, and European Accessibility Act (EAA) compliance in mind, it provides a solid foundation for creating inclusive websites. Features Tailwind CSS 4 integration, comprehensive component library with enhanced form validation, color contrast checker, and typography with Atkinson Hyperlegible font for improved readability. Includes a powerful command launcher for keyboard-driven navigation, preference toggles for dark mode, high contrast, and reduced motion, plus dynamic blog/portfolio pages with social sharing, contact forms, and full MDX support.
+## How It Works (The Big Picture)
 
-[![LIVE DEMO](https://img.shields.io/badge/LIVE_DEMO-4ECCA3?style=for-the-badge&logo=astro&logoColor=black)](https://accessible-astro-starter.incluud.dev/) &nbsp;
-[![DOCUMENTATION](https://img.shields.io/badge/DOCUMENTATION-A682FF?style=for-the-badge&logo=astro&logoColor=black)](https://accessible-astro.incluud.dev/) &nbsp;
-[![Sponsor on Open Collective](https://img.shields.io/badge/Open%20Collective-7FADF2?style=for-the-badge&logo=opencollective&logoColor=white)](https://opencollective.com/incluud) &nbsp;
+- **Pages** live in `src/pages/` — each file is a URL on the site
+- **Blog posts** live in `src/content/blog/` — add a file, get a post
+- **Site-wide settings** (name, colors, nav links, socials) live in `theme.config.ts`
+- **Push to `main`** → GitHub builds and deploys automatically
 
-## Our mission
+You don't need to run anything locally to make changes. Edit files on GitHub directly, commit, and the site updates.
 
-> Provide developers with accessible, easy-to-use components that make building inclusive web applications simpler and faster, without compromising on customization or performance.
+---
 
-## (Accessibility) Features
+## Pages
 
-- Astro 6.1.1+
-- Tailwind CSS 4.1+ support
-- TypeScript integration with path aliases for easier imports and content collections support
-- Prettier integration with `prettier-plugin-astro` and `prettier-plugin-tailwind`
-- ESLint integration with strict accessibility settings for `eslint-plugin-jsx-a11y`
-- Markdown and MDX support with comprehensive examples and components
-- Modern OKLCH color system with automatic palette generation from primary/secondary colors
-- Atkinson Hyperlegible font for improved readability and accessibility
-- Lucide icon set via `astro-icon` for consistent, friendly icons
-- Semantic HTML structure with `Button`, `Link` and `Heading` components
-- Excellent Lighthouse/PageSpeed scores
-- Accessible landmarks such as `header`, `main`, `footer`, `section` and `nav`
-- Outline focus indicator which works on dark and light backgrounds
-- Several `aria` attributes which provide a better experience for screen reader users
-- `[...page].astro` and `[post].astro` demonstrate the use of dynamic routes and provide a basic blog with breadcrumbs and pagination
-- `404.astro` provides a custom 404 error page which you can adjust to your needs
-- `Header.astro` component with optimized accessibility and design
-- `Footer.astro` component with informative content and links
-- `SkipLinks.astro` component to skip to either the main menu or the main content
-- `Navigation.astro` component with keyboard accessible (dropdown) navigation and highlighted menu item option
-- `ResponsiveToggle.astro` component with accessible responsive toggle functionality
-- Preference toggles for Dark Mode, High Contrast, and Reduced Motion with system preference support
-- `ColorContrast.astro` component for enhanced visual clarity and WCAG compliance
-- Built-in command launcher with keyboard navigation (Cmd/Ctrl+K) for quick access to preferences and navigation
-- `SiteMeta.astro` SEO component for setting custom metadata on different pages
-- `.sr-only` utility class for screen reader only text content (hides text visually)
-- `prefers-reduced-motion` disables animations for users that have this preference turned on
-- Components including `ColorContrast.astro`, `BlockQuote.astro`, `BreakoutImage.astro`, `Logo.astro`, `SocialShares.astro`, `PageHeader.astro`, `FeaturedPosts.astro`, and `FeaturedProjects.astro`
-- Enhanced form components with comprehensive validation: `Form`, `Input`, `Textarea`, `Checkbox`, `Radio`, and `Fieldset` with WCAG 2.2 compliance
-- Automatic form validation with custom patterns, error handling, and screen reader support
-- Blog and portfolio pages with featured images, author details, social sharing, and breakout images
-- Contact page with comprehensive form validation showcase and accessibility demonstrations
-- Thank-you page for form submissions with interactive feedback
-- Accessibility Statement template page
-- Color Contrast Checker interactive page
-- Comprehensive sitemap page with organized navigation and automatic XML sitemap generation via `@astrojs/sitemap`
-- Enhanced accessible-components showcase page with expanded component demonstrations
-- Smooth micro-interactions and animations on hover, open and close states (respecting reduced motion preferences)
-- Comprehensive SCSS utility classes
-- CSS with logical properties and custom properties
-- Accessible button and hyperlink styling with clear focus states
-- Styled `<kbd>` element for keyboard shortcut documentation
+### Your pages and where to find them
 
-## Getting started
+| Page | File |
+|------|------|
+| Home | `src/pages/index.astro` |
+| FAQs & Guides (index) | `src/pages/faqs/index.mdx` |
+| Quick Start Guide | `src/pages/faqs/quickstart.mdx` |
+| MQTT Setup Guide | `src/pages/faqs/mqtt.mdx` |
+| OTA Firmware Update | `src/pages/faqs/ota.mdx` |
+| EmComm | `src/pages/emcomm.mdx` |
+| Events | `src/pages/events/index.mdx` |
+| Friday Nets | `src/pages/events/nets/index.mdx` |
+| Links & Resources | `src/pages/links.mdx` |
+| Blog | `src/pages/blog/` (auto-generated from `src/content/blog/`) |
+| 404 | `src/pages/404.astro` |
 
-Clone this theme locally and run any of the following commands in your terminal:
+### Page types
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:4321`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+Most pages are **MDX files** (`.mdx`) — these are Markdown with a little extra power. If you know how to write Markdown (headings with `#`, bold with `**text**`, links with `[text](url)`), you can edit these pages.
 
-## Accessible Astro ecosystem
+The home page (`index.astro`) is more complex — it's best to ask a developer before editing it.
 
-The Accessible Astro ecosystem is a collection of projects that are designed to help you build accessible web applications. It includes:
+---
 
-- [Accessible Astro Starter](https://github.com/incluud/accessible-astro-starter): Fully accessible starter for kickstarting Astro projects, with Tailwind.
-- [Accessible Astro Components](https://github.com/incluud/accessible-astro-components/): Library of reusable, accessible components built for Astro.
-- [Accessible Astro Dashboard](https://github.com/incluud/accessible-astro-dashboard/): User-friendly dashboard interface with a login screen and widgets.
-- [Accessible Astro Launcher](https://github.com/incluud/accessible-astro-launcher): Command palette/launcher component for Astro projects.
-- [Accessible Astro Docs](https://github.com/incluud/accessible-astro-docs): Comprehensive documentation for all Accessible Astro projects.
-- [Color Contrast Checker](https://github.com/incluud/color-contrast-checker): WCAG-compliant color contrast checker with design system token generation.
+## Editing a Page
 
-Check out our [roadmap](https://github.com/orgs/incluud/projects/4/views/1) to see what's coming next!
+Open the `.mdx` file for the page you want to edit. At the top you'll see a block between `---` lines called **frontmatter** — this controls the page title and description:
 
-## Contributing
+```
+---
+layout: '../../layouts/MarkdownLayout.astro'
+title: Quick Start Guide
+description: Step-by-step instructions to set up your first node.
+pageHeader:
+  title: Quick Start Guide
+  subtitle: Set up your first node and join the CSRA Mesh.
+  bgType: bordered
+---
+```
 
-We welcome contributions to improve the documentation! You can help by:
+- **`title`** — used in the browser tab and search results
+- **`description`** — used in search results and social sharing previews
+- **`pageHeader.title` / `pageHeader.subtitle`** — the big heading shown at the top of the page
 
-1. [Filing an issue](https://github.com/incluud/accessible-astro-starter/issues)
-2. [Submitting a pull request](https://github.com/incluud/accessible-astro-starter/pulls)
-3. [Starting a discussion](https://github.com/incluud/accessible-astro-starter/discussions)
-4. [Supporting on Open Collective](https://opencollective.com/incluud)
+Below the frontmatter is the page content written in Markdown.
 
-## Support this project
+### Common Markdown formatting
 
-Your support helps us cover basic costs and continue building accessible solutions for the Astro ecosystem. By becoming a sponsor, you're not just supporting code – you're helping create a more inclusive web for everyone. Every contribution, big or small, helps maintain and improve these accessibility-focused tools.
+```markdown
+# Big heading
+## Section heading
+### Subsection heading
 
-[![Sponsor on Open Collective](https://img.shields.io/badge/Open%20Collective-7FADF2?style=for-the-badge&logo=opencollective&logoColor=white)](https://opencollective.com/incluud)
+Regular paragraph text.
 
-## Together we make a difference
+**Bold text** and *italic text*
 
-We want to express our heartfelt gratitude to everyone who contributes to making the web more accessible:
+- Bullet point
+- Another bullet point
 
-- **The Astro team** for creating an amazing static site generator and the wonderful Starlight theme
-- **Our contributors** who dedicate their time and expertise to improve these tools
-- [**Niek Derksen**](https://niekderksen.nl) for conducting comprehensive accessibility audits to ensure WCAG compliance
-- **Our sponsors** who help make this project sustainable
-- **The web community** for embracing and promoting web accessibility
-- **You, the developer** for choosing to make your projects more accessible
+1. Numbered step
+2. Another step
 
-<a href="https://github.com/incluud/accessible-astro-starter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=incluud/accessible-astro-starter" />
-</a><br /><br />
+[Link text](https://example.com)
+```
 
-Together, we're not just building documentation or components – we're creating a more inclusive and accessible web for everyone. Every contribution, whether it's code, documentation, bug reports, or feedback, helps move us closer to this goal. ✨
+---
 
-Remember: Accessibility is not a feature, it's a fundamental right. Thank you for being part of this journey!
+## Adding a New FAQ / Guide
+
+1. Create a new `.mdx` file in `src/pages/faqs/` — e.g. `src/pages/faqs/channel-setup.mdx`
+2. Add frontmatter at the top:
+
+```
+---
+layout: '../../layouts/MarkdownLayout.astro'
+title: Channel Setup Guide
+description: How to configure your Meshtastic channels for the CSRA Mesh.
+pageHeader:
+  title: Channel Setup Guide
+  subtitle: Get your channels set up correctly.
+  bgType: bordered
+---
+```
+
+3. Write your content below in Markdown
+4. Add a link to it in `src/pages/faqs/index.mdx` so people can find it
+
+The page will be live at `/faqs/channel-setup` once deployed.
+
+---
+
+## Blog Posts
+
+Blog posts live in `src/content/blog/`. Each `.mdx` file is one post.
+
+### Adding a blog post
+
+Create a new file like `src/content/blog/my-post-title.mdx` with this frontmatter:
+
+```
+---
+title: My Post Title
+description: A short summary shown in the blog listing.
+pubDate: 2025-06-01
+author: Your Name
+tags: [community, update]
+---
+```
+
+Then write your post content below in Markdown. The filename (e.g. `my-post-title`) becomes the URL: `/blog/my-post-title`.
+
+### Tips
+
+- `pubDate` controls sort order — newer dates appear first
+- `tags` are optional but useful for organizing posts
+- The `description` appears as the card preview on the blog listing page
+
+---
+
+## Navigation & Site Settings
+
+Everything in `theme.config.ts` controls the site-wide settings:
+
+- **`name`** — site name used in the header
+- **`seo.title` / `seo.description`** — default meta tags for search engines
+- **`colors.primary` / `colors.secondary`** — brand colors (hex values)
+- **`navigation.items`** — the links shown in the top nav bar
+- **`socials`** — the social icons shown in the footer
+
+### Adding a nav link
+
+In `theme.config.ts`, find the `navigation.items` array and add an entry:
+
+```ts
+{
+  type: 'link',
+  label: 'New Page',
+  href: '/new-page',
+},
+```
+
+For external links, add `external: true`:
+
+```ts
+{
+  type: 'link',
+  label: 'Discord',
+  href: 'https://discord.gg/mgzj2PmhKf',
+  external: true,
+},
+```
+
+---
+
+## Footer Links
+
+Footer links are in `src/components/Footer.astro`. Look for the "Pages" section — it's a short list of `<Link>` tags. Add or remove entries to match the pages you want listed.
+
+---
+
+## Images & Files
+
+Static files (images, PDFs, etc.) go in the `public/` folder at the root of the project. A file at `public/images/my-photo.jpg` is accessible at `/images/my-photo.jpg` in the site.
+
+To use an image in a page:
+
+```markdown
+![Description of the image](/images/my-photo.jpg)
+```
+
+---
+
+## Deploying
+
+Push any change to the `main` branch and GitHub Actions will automatically build and deploy the site. You can watch the progress at:
+
+**https://github.com/csramsh/dev-website/actions**
+
+The live site is at: **https://csramsh.github.io/dev-website/**
+
+---
+
+## Getting Help
+
+- Join the Discord and ask in the dev channel
+- For larger changes, open a GitHub issue describing what you want
+- The original template documentation is in `ORIGINAL-README.md`
