@@ -4,6 +4,7 @@ import PageHeader from '@components/PageHeader.astro'
 import { Card, Pagination } from 'accessible-astro-components'
 import { getCollection } from 'astro:content'
 import type { PaginateFunction, Page, CollectionEntry } from 'astro'
+import { siteUrl } from '@utils/url'
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const posts = await getCollection('blog')
@@ -28,7 +29,7 @@ const { page } = Astro.props
           page.data.map((post) => (
             <li>
               <Card
-                url={'/blog/' + post.slug}
+                url={siteUrl('/blog/' + post.slug)}
                 title={post.data.title}
                 headingLevel="h2"
                 footer={post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -44,10 +45,10 @@ const { page } = Astro.props
         page.lastPage > 1 && (
           <div class="mt-12 grid place-content-center">
             <Pagination
-              firstPage={page.url.prev ? '/blog' : null}
-              previousPage={page.url.prev ?? null}
-              nextPage={page.url.next ?? null}
-              lastPage={page.url.next ? `/blog/${page.lastPage}` : null}
+              firstPage={page.url.prev ? siteUrl('/blog') : null}
+              previousPage={page.url.prev ? siteUrl(page.url.prev) : null}
+              nextPage={page.url.next ? siteUrl(page.url.next) : null}
+              lastPage={page.url.next ? siteUrl(`/blog/${page.lastPage}`) : null}
               currentPage={`${page.currentPage}`}
               totalPages={`${page.lastPage}`}
               ariaLabel="Blog pagination"
