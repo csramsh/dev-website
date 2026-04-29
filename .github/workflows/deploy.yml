@@ -31,6 +31,9 @@ jobs:
       - uses: actions/configure-pages@v4
 
       - run: npm run build
+        env:
+          BASE_PATH: /dev-website
+          DEPLOY_SITE: https://csramsh.github.io/dev-website
 
       - uses: actions/upload-pages-artifact@v3
         with:

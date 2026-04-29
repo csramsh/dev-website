@@ -39,8 +39,8 @@ const viteConfig = {
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://csramsh.github.io/dev-website',
-  base: '/dev-website',
+  site: process.env.DEPLOY_SITE || 'https://csramsh.github.io/dev-website',
+  base: process.env.BASE_PATH || '/',
   integrations: [compress(), icon(), mdx(), sitemap()],
   vite: enhanceConfigForWorkspace(viteConfig),
   env: {
