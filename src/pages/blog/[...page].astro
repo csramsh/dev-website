@@ -1,0 +1,60 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Card, Pagination } from 'accessible-astro-components'
+import { getCollection } from 'astro:content'
+import type { PaginateFunction, Page, CollectionEntry } from 'astro'
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const posts = await getCollection('blog')
+  const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  return paginate(sorted, { pageSize: 6 })
+}
+
+interface Props {
+  page: Page<CollectionEntry<'blog'>>
+}
+
+const { page } = Astro.props
+---
+
+<DefaultLayout title="Blog" description="News and updates from the CSRA Mesh community.">
+  <PageHeader title="Blog" subtitle="News and updates from the CSRA Mesh community." bgType="bordered" />
+  <section class="my-12">
+    <div class="container">
+      <p class="text-sm"><em>Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em></p>
+      <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          page.data.map((post) => (
+            <li>
+              <Card
+                url={'/blog/' + post.slug}
+                title={post.data.title}
+                headingLevel="h2"
+                footer={post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                fullHeight={true}
+              >
+                {post.data.description}
+              </Card>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        page.lastPage > 1 && (
+          <div class="mt-12 grid place-content-center">
+            <Pagination
+              firstPage={page.url.prev ? '/blog' : null}
+              previousPage={page.url.prev ?? null}
+              nextPage={page.url.next ?? null}
+              lastPage={page.url.next ? `/blog/${page.lastPage}` : null}
+              currentPage={`${page.currentPage}`}
+              totalPages={`${page.lastPage}`}
+              ariaLabel="Blog pagination"
+            />
+          </div>
+        )
+      }
+    </div>
+  </section>
+</DefaultLayout>
