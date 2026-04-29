@@ -9,6 +9,7 @@ import {
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import themeConfig from '@theme-config'
+import { siteUrl } from '@utils/url'
 
 const launcherPreferenceItems = [
   { label: 'Dark mode', onAction: 'toggle-dark-mode' },
@@ -20,7 +21,7 @@ const launcherBlogItems = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map((post) => ({
     label: post.data.title,
-    href: `/blog/${post.slug}`,
+    href: siteUrl(`/blog/${post.slug}`),
   }))
 
 const launcherNavigationItems = themeConfig.navigation.items.flatMap((item) => {
@@ -29,13 +30,13 @@ const launcherNavigationItems = themeConfig.navigation.items.flatMap((item) => {
   if (item.type === 'dropdown') {
     return item.items.map((subItem) => ({
       label: subItem.label,
-      href: subItem.href,
+      href: subItem.external ? subItem.href : siteUrl(subItem.href),
       external: subItem.external ?? false,
     }))
   }
 
   if (!item.type || item.type === 'link') {
-    return [{ label: item.label, href: item.href, external: item.external ?? false }]
+    return [{ label: item.label, href: item.external ? item.href : siteUrl(item.href), external: item.external ?? false }]
   }
 
   return []
