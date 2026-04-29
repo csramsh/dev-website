@@ -3,7 +3,7 @@ import themeConfig from '@theme-config'
 import { Link, DarkMode } from 'accessible-astro-components'
 import { LauncherTrigger } from 'accessible-astro-launcher'
 import { Icon } from 'astro-icon/components'
-import { url } from '@utils/url'
+import { siteUrl } from '@utils/url'
 
 /**
  * Navigation Items Component
@@ -24,7 +24,7 @@ import { url } from '@utils/url'
             <Icon aria-hidden="true" name="lucide:chevron-down" size="32" />
           </button>
         ) : !item.type || item.type === 'link' ? (
-          <Link href={item.external ? item.href : url(item.href)} isExternal={item.external ?? false} hideIcon={!!item.icon}>
+          <Link href={item.external ? item.href : siteUrl(item.href)} isExternal={item.external ?? false} hideIcon={!!item.icon}>
             {item.icon ? (
               <>
                 <Icon aria-hidden="true" name={item.icon} size="32" />
@@ -39,7 +39,7 @@ import { url } from '@utils/url'
           <ul class="dropdown-menu">
             {item.items.map((subItem) => (
               <li class="submenu-item">
-                <Link href={subItem.external ? subItem.href : url(subItem.href)} isExternal={subItem.external ?? false}>
+                <Link href={subItem.external ? subItem.href : siteUrl(subItem.href)} isExternal={subItem.external ?? false}>
                   {subItem.label}
                 </Link>
               </li>

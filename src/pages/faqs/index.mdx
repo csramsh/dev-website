@@ -9,19 +9,19 @@ pageHeader:
 ---
 
 import { Link } from 'accessible-astro-components'
-import { url } from '../../utils/url.ts'
+import { siteUrl } from '../../utils/url.ts'
 
 ## Guides
 
-### <Link href={url('/faqs/quickstart')}>Quick Start Guide</Link>
+### <Link href={siteUrl('/faqs/quickstart')}>Quick Start Guide</Link>
 
 New to Meshtastic? Start here. Step-by-step instructions to get your first node set up and connected to the CSRA Mesh.
 
-### <Link href={url('/faqs/mqtt')}>MQTT Setup Guide</Link>
+### <Link href={siteUrl('/faqs/mqtt')}>MQTT Setup Guide</Link>
 
 Configure your node to share telemetry with the CSRA Mesh MQTT broker for mesh analysis and coverage mapping.
 
-### <Link href={url('/faqs/ota')}>OTA Firmware Update</Link>
+### <Link href={siteUrl('/faqs/ota')}>OTA Firmware Update</Link>
 
 Update nRF52-based nodes (like the RAK4631) wirelessly via Bluetooth — ideal for solar, rooftop, or other hard-to-reach installs.
 
