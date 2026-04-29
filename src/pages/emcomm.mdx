@@ -4,7 +4,8 @@ title: CSRA EmComm
 description: CSRA Emergency Communications plan for Meshtastic — covering preparedness, testing, and response protocols for the Central Savannah River Area.
 ---
 
-import { Notification } from 'accessible-astro-components'
+import { Notification, Link } from 'accessible-astro-components'
+import { url } from '../utils/url.ts'
 
 # CSRA Emergency Communications
 
@@ -40,7 +41,7 @@ The Wilderness Protocol is an Amateur Radio protocol for hikers and campers to m
   your disposal.
 </Notification>
 
-The CSRA Mesh uses the standard **LongFast** default settings. See the [FAQs & Guides](/faqs) page for setup instructions.
+The CSRA Mesh uses the standard **LongFast** default settings. See the <Link href={url('/faqs')}>FAQs & Guides</Link> page for setup instructions.
 
 ---
 
@@ -94,7 +95,7 @@ Participate in scheduled practice communications:
 - Run **open nets** for general participation
 - Run **closed nets** for small group exercises
 - Practice equipment operation and verification
-- See our [Mesh Events](/events) page for the weekly Friday net schedule
+- See our <Link href={url('/events')}>Mesh Events</Link> page for the weekly Friday net schedule
 
 ---
 
