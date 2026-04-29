@@ -1,0 +1,132 @@
+---
+layout: '../layouts/MarkdownLayout.astro'
+title: CSRA EmComm
+description: CSRA Emergency Communications plan for Meshtastic — covering preparedness, testing, and response protocols for the Central Savannah River Area.
+---
+
+import { Notification } from 'accessible-astro-components'
+
+# CSRA Emergency Communications
+
+## A Start
+
+In September 2024, Hurricane Helene devastated the Central Savannah River Area. With winds exceeding 100 mph, hundreds of homes were destroyed and widespread power and cell outages lasted days to weeks for much of the CSRA. Our only real way to get information for days after the storm was via FM and Amateur radio.
+
+After recognizing Meshtastic's potential as an emergency communication tool rather than just a hobby gadget, we established a local mesh network similar to the Mountain Mesh community in North Georgia. The CSRA network now includes roughly **70+ active nodes** in the area, with more being added every week.
+
+Successful emergency communication requires preparation: *How do we ensure that the mesh can be rebuilt quickly after infrastructure has been destroyed?*
+
+---
+
+## Resources
+
+### Channel 3 Project — AmRRON
+
+The [Channel 3 Project by AmRRON](https://amrron.com/communications-resources/ch3-project/) standardizes non-licensed radio communication (FRS, GMRS, CB) during emergencies using coordinated channels and times. A useful complement to the Meshtastic mesh.
+
+### Wilderness Protocol
+
+The Wilderness Protocol is an Amateur Radio protocol for hikers and campers to monitor simplex frequencies at designated times — providing emergency availability when standard communications are unavailable.
+
+- [TCARES Wilderness Protocol](https://tcares.net/the-wilderness-protocol/)
+- [CVARA Wilderness Protocol](https://cvara.net/public-service/wilderness-protocol/)
+
+---
+
+## CSRA Mesh — Tentative EmComm Plan
+
+<Notification type="info">
+  Any good EmComm plan will have **layers of communication**. The Mesh should be only one of the layers you have at
+  your disposal.
+</Notification>
+
+The CSRA Mesh uses the standard **LongFast** default settings. See the [FAQs & Guides](/faqs) page for setup instructions.
+
+---
+
+## Preparedness — Be Ready
+
+### 1. Power
+
+- Maintain charged node batteries
+- Plan multiple recharging methods (solar, car, generator)
+- Coordinate power conservation schedules if extended events occur
+- Account for dependent devices (phones, computers)
+
+### 2. Settings
+
+- Keep firmware updated to current stable versions
+- Maintain backup firmware copies for field repairs
+- Test update procedures beforehand
+- Back up device settings and encryption keys
+
+<Notification type="warning">
+  Meshtastic is still a Beta project and constantly changing. Firmware updates may change behavior — test before you
+  need it.
+</Notification>
+
+### 3. Apps & Devices
+
+- Test all interface devices regularly
+- Conduct full verification several days before anticipated events
+- Retrieve stored nodes every three to six months for testing
+- Account for app/firmware compatibility issues
+
+### 4. Spare Parts
+
+- Stock equipment for repairs and replacements
+- Prepare for the possibility of helping neighbors or first responders whose equipment has failed
+
+---
+
+## Proactive — Test It
+
+### 1. Contacts
+
+- Maintain regular mesh communication
+- Screenshot map data periodically
+- Understand local coverage patterns
+
+### 2. Nets
+
+Participate in scheduled practice communications:
+
+- Run **open nets** for general participation
+- Run **closed nets** for small group exercises
+- Practice equipment operation and verification
+- See our [Mesh Events](/events) page for the weekly Friday net schedule
+
+---
+
+## If It Happens — Response Plan
+
+### 1. Safety First
+
+<Notification type="error">
+  Make sure you and your loved ones are safe! You can't help someone else if you are in danger. Get to a safe
+  location/status first.
+</Notification>
+
+### 2. Resource Assessment
+
+Inventory your supplies and node power status to ration appropriately for the duration of the event.
+
+### 3. Monitor the Mesh
+
+- **Recommended monitoring:** 7 AM – 7 PM daily
+- **Alternative schedule:** 30-minute monitoring every 4 hours: 7 AM, 11 AM, 3 PM, 7 PM
+- 24/7 operation recommended if power permits
+- Keep private messages minimal to preserve battery and bandwidth
+- Send brief, specific messages including: **location, time, and description**
+
+> Note: Long messages may be broken up and information lost. Keep messages concise.
+
+### 4. Mesh Infrastructure
+
+Help restore network gaps by deploying spare nodes. Set them to **client** role when it is appropriate to not overload a given area with routers.
+
+### 5. Common Courtesy
+
+> *"Be prepared mentally to be kind and compassionate when others are rude or otherwise disrespectful."*
+
+Emergency situations are stressful. A calm, patient presence helps the whole community respond more effectively.

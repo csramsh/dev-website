@@ -1,0 +1,94 @@
+---
+layout: '../../layouts/MarkdownLayout.astro'
+title: MQTT Setup Guide
+description: Configure your Meshtastic node to share telemetry with the CSRA Mesh MQTT broker for mesh analysis and coverage mapping.
+pageHeader:
+  title: MQTT Setup Guide
+  subtitle: Share telemetry with the CSRA Mesh broker for mesh analysis and coverage mapping.
+  bgType: bordered
+---
+
+## What is MQTT?
+
+The Meshtastic website describes MQTT as: *"Bridging mesh networks over the internet and integrating Meshtastic protocols with popular technologies."*
+
+MQTT is a message broker tool that enables nodes to share data across both internet and LoRa RF connections. Once configured, information can be aggregated for mesh analysis, multi-area maps can be created, or messages can be relayed remotely.
+
+While this somewhat contradicts Meshtastic's primary advantage (internet-independent operation), the CSRA community uses MQTT for analytical purposes during mesh expansion. Real-time node visibility logging helps identify RF connection gaps.
+
+**Reference:** [Meshtastic MQTT Documentation](https://meshtastic.org/docs/software/integrations/mqtt/)
+
+---
+
+## Before You Configure
+
+Two things to consider before contributing data:
+
+- **Community membership:** Data helps only if you're part of the CSRA community. If you're setting up a separate community's MQTT, we can still help — reach out on Discord.
+- **Connection purpose:** Currently we support uplink-only telemetry for mesh analysis. We are not currently bridging inter-mesh or enabling distant node messaging.
+
+---
+
+## Configuration Settings
+
+### LongFast Channel
+
+`Radio Configuration → Channels → LongFast`
+
+| Setting | Value |
+|---|---|
+| Uplink Enabled | ✅ Checked |
+| Downlink Enabled | ☐ Unchecked |
+| Position enabled | ✅ Checked |
+| Precise Location | User preference |
+| Precision Slider | User preference |
+
+---
+
+### LoRa
+
+`Radio Configuration → LoRa`
+
+| Setting | Value |
+|---|---|
+| Ignore MQTT | ☐ Unchecked |
+| OK to MQTT | ✅ Checked |
+
+---
+
+### MQTT Module
+
+`Module Configuration → MQTT`
+
+| Setting | Value |
+|---|---|
+| MQTT Enabled | ✅ Checked |
+| MQTT Server Address | `mqtt.csramsh.net` |
+| MQTT Username | `meshdev` (Alt: `csramsh`) |
+| MQTT Password | `large4cats` (Alt: `csramsh`) |
+| Encryption Enabled | ✅ Checked |
+| JSON Enabled | ☐ Unchecked |
+| TLS Enabled | ✅ Checked |
+| Root topic | `msh/US/GA/csramsh` |
+| Proxy to client | ✅ Enabled |
+| Map reporting | ✅ Checked |
+| Map reporting interval | `10800` seconds |
+| Precise location | User preference |
+
+> TLS encrypts data between MQTT clients and broker. Not supported on all platforms.
+
+---
+
+### Neighbor Info
+
+`Module Configuration → Neighbor Info`
+
+| Setting | Value |
+|---|---|
+| Neighbor Info enabled | ✅ Checked |
+| Update interval | `14400` seconds |
+| Transmit over LoRa | ☐ Unchecked |
+
+---
+
+These settings should configure your node to connect and share data with our MQTT broker. For troubleshooting or questions, contact us via [Discord](https://discord.gg/mgzj2PmhKf) or Facebook.

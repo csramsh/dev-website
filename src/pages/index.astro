@@ -1,171 +1,226 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
-import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
-import FeaturedProjects from '@components/FeaturedProjects.astro'
-import FeaturedPosts from '@components/FeaturedPosts.astro'
-import { Accordion, AccordionItem, Avatar, AvatarGroup, Heading, Link } from 'accessible-astro-components'
+import { Accordion, AccordionItem, Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
-<DefaultLayout title="Accessible Astro Starter - Build Faster, More Inclusive Websites" useTitleTemplate={false}>
-  <Hero />
+<DefaultLayout
+  title="CSRA Mesh — Meshtastic Community"
+  description="A Meshtastic enthusiasts community in the Central Savannah River Area (CSRA). Building an off-grid mesh network across Augusta, Evans, Grovetown, North Augusta, Aiken, and beyond."
+  useTitleTemplate={false}
+>
+  <!-- Hero -->
+  <section class="hero my-24">
+    <div class="container">
+      <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
+        <div class="flex flex-col items-center gap-8 md:items-start">
+          <h1 class="text-center text-6xl md:text-left lg:text-8xl">
+            <span class="text-gradient">CSRA Mesh</span> Community
+          </h1>
+          <p class="text-2xl">
+            A Meshtastic enthusiasts community in the Central Savannah River Area — connecting Augusta, Evans,
+            Grovetown, North Augusta, Aiken, and beyond without internet or cell service.
+          </p>
+          <div class="flex flex-col gap-3 min-[500px]:flex-row">
+            <Link
+              href="https://discord.gg/mgzj2PmhKf"
+              isButton
+              type="primary"
+              animateOnHover
+              animationType="boop"
+              isExternal
+            >
+              <Icon aria-hidden="true" name="lucide:message-circle" size="1.5rem" />
+              Join our Discord
+            </Link>
+            <Link href="/faqs/quickstart" isButton type="secondary" animateOnHover animationType="boop">
+              <Icon aria-hidden="true" name="lucide:book-open" size="1.5rem" />
+              Getting Started
+            </Link>
+          </div>
+        </div>
+        <div class="hidden lg:block space-content">
+          <p class="text-xl font-semibold">Active Nodes</p>
+          <ul class="text-lg list-disc pl-6">
+            <li><strong>Georgia:</strong> Evans, Grovetown, Augusta, Thomson</li>
+            <li><strong>South Carolina:</strong> North Augusta, Clearwater, Aiken</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is CSRA Mesh -->
   <section class="my-64">
     <div class="container">
-      <Heading level="h2" class="mb-8">Features</Heading>
+      <Heading level="h2" class="mb-8">What is the CSRA Mesh?</Heading>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature icon="lucide:accessibility" title="Accessible by default">
-          Keyboard navigation, focus indicators, ARIA labels, semantic HTML, and more. This theme is designed to be
-          inclusive.
+        <Feature icon="lucide:radio" title="Off-Grid Communication">
+          CSRA Mesh is a community bringing together communication enthusiasts from around the CSRA for coordination and
+          collaboration — makers, Amateur Radio operators, GMRS operators, preppers, and more.
         </Feature>
-        <Feature icon="lucide:puzzle" title="A11Y components">
-          35+ components and counting, all tried and tested for the most optimal accessible experience for your
-          visitors.
+        <Feature icon="lucide:wifi-off" title="No Infrastructure Needed">
+          Using the LoRa protocol, inexpensive Meshtastic devices talk to each other and pass messages over moderate to
+          long distances — without internet, cell service, or 3rd party infrastructure.
         </Feature>
-        <Feature icon="lucide:moon" title="Dark mode">
-          Fully integrated Dark mode gives your users the choice for their favorite viewing mode.
+        <Feature icon="lucide:sun" title="Solar-Powered Nodes">
+          Nodes can be solar-powered and placed on rooftops to extend the mesh without power infrastructure. A small
+          battery the size of two AA batteries can run a node for more than two weeks when fully charged.
         </Feature>
-        <Feature icon="lucide:paintbrush" title="Tailwind 4.0">
-          Use the power of Tailwind to greatly improve your productivity and enhance your developer workflow.
+        <Feature icon="lucide:map-pin" title="Growing Coverage">
+          We actively build out the mesh to connect the entire CSRA. Every new node extends overall reach and allows new
+          areas to join the network.
         </Feature>
-        <Feature icon="lucide:sparkles" title="Prettier">
-          Less worry about formatting your code, let the Astro Prettier integration do the heavy lifting.
+        <Feature icon="lucide:smartphone" title="Easy to Use">
+          The Meshtastic app (iOS & Android) connects to your node via Bluetooth or WiFi to send and receive text
+          messages — no technical expertise required.
         </Feature>
-        <Feature icon="lucide:code" title="ESLint">
-          Lint your code with strict a11y settings to ensure you stay on track with the WCAG standards.
-        </Feature>
-        <Feature icon="lucide:bookmark" title="Blog & portfolio">
-          This theme comes with a fully integrated blog and portfolio, dynamic pages and SEO optimization.
-        </Feature>
-        <Feature icon="lucide:file-text" title="Markdown & MDX">
-          Easily use .md and .mdx pages to build your websites or use it with Netlify CMS.
-        </Feature>
-        <Feature icon="lucide:blocks" title="Design system">
-          The theme offers some very handy utilities to help you build your website faster.
+        <Feature icon="lucide:shield-check" title="Emergency Ready">
+          After Hurricane Helene demonstrated the value of resilient communication, we've been building a network that
+          works when traditional infrastructure fails.
         </Feature>
       </div>
     </div>
   </section>
+
+  <!-- What is Meshtastic -->
   <ContentMedia imgSrc="/accessible-components.webp">
-    <Heading level="h2">Accessible components</Heading>
+    <Heading level="h2">What is Meshtastic?</Heading>
     <p class="text-2xl">
-      This theme provides plenty of tried and tested Accessible Astro Components. Some are native to this theme and a
-      lot of others are integrated using a <Link
-        isExternal
-        href="https://github.com/incluud/accessible-astro-components">separate package</Link
-      >. They'll get you up and running in building an accessible solution for your visitors.
+      To quote the Meshtastic website: Meshtastic is "an open source, off-grid, decentralized, mesh network built to
+      run on affordable, low-power devices." Visit{' '}
+      <Link isExternal href="https://www.meshtastic.org">www.meshtastic.org</Link> to learn more.
     </p>
   </ContentMedia>
+
+  <!-- What is a Node -->
   <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-    <Heading level="h2">WCAG 2.2 AA compliant</Heading>
+    <Heading level="h2">What is a "Node"?</Heading>
     <p class="text-2xl">
-      Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
-      navigation and components, clear outlines and tab indicators and the right color contrast, you're more certain of
-      reaching WCAG AA compliance.
+      A node is a LoRa device flashed with Meshtastic firmware. They can be purchased pre-built, assembled from a kit,
+      or home-built. Low-power units can run off a small solar panel placed on a rooftop — no power infrastructure
+      required.
     </p>
   </ContentMedia>
-  <FeaturedProjects />
-  <FeaturedPosts />
+
+  <!-- Stats -->
+  <section class="mt-64 mb-32">
+    <div class="container">
+      <Heading level="h2" class="mb-16">CSRA Mesh by the Numbers</Heading>
+      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
+        <Counter count="70+" title="Active Nodes" sub="And growing weekly" />
+        <Counter count="6+" title="Cities" sub="Georgia & South Carolina" />
+        <Counter count="5" title="Pages" sub="Of guides & resources" />
+        <Counter count="86+" title="Members" sub="On Discord" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Preview -->
   <section class="my-64">
     <div class="container grid grid-cols-1 gap-12 md:grid-cols-2">
       <div class="flex flex-col items-start gap-4">
-        <Heading level="h2">FAQ</Heading>
+        <Heading level="h2">Common Questions</Heading>
         <p class="text-2xl">
-          This section demonstrates how to effectively use the Accordion component to organize and display frequently
-          asked questions in an accessible and user-friendly way.
+          New to Meshtastic or CSRA Mesh? We have guides covering initial setup, MQTT configuration, OTA firmware
+          updates, and more.
         </p>
-        <Link href="/faq" isButton type="primary" animateOnHover animationType="boop">
-          <Icon aria-hidden="true" name="lucide:headset" size=" 1.5rem" />
-          Contact support team
+        <Link href="/faqs" isButton type="primary" animateOnHover animationType="boop">
+          <Icon aria-hidden="true" name="lucide:book-open" size="1.5rem" />
+          View all guides
         </Link>
       </div>
       <div class="space-content">
         <Accordion>
-          <AccordionItem name="exclusive" title="What is WCAG and why is it important?" open>
+          <AccordionItem name="faq" title="How do I get started with Meshtastic?" open>
             <p>
-              WCAG (Web Content Accessibility Guidelines) is a set of internationally recognized standards for web
-              accessibility. Following WCAG ensures your website is usable by people with various disabilities,
-              including visual, auditory, physical, and cognitive impairments. It's important not just for
-              accessibility, but also for legal compliance, SEO, and reaching a wider audience.
+              Purchase a LoRa node (many are available pre-built), install the Meshtastic app on your iOS or Android
+              device, and follow our Quick Start Guide on the FAQs page. The key is making sure your node has an antenna
+              attached before powering it on!
             </p>
           </AccordionItem>
-          <AccordionItem name="exclusive" title="What's the difference between ARIA labels and alt text?">
+          <AccordionItem name="faq" title="How can I join the CSRA Mesh network?">
             <p>
-              Alt text is specifically for describing images to screen reader users, while ARIA labels (aria-label,
-              aria-labelledby) can describe any element on a page. Alt text is HTML's native way to provide alternative
-              text for images, while ARIA labels are part of the ARIA specification that helps make dynamic content and
-              advanced UI controls more accessible.
+              Join us on Discord or Facebook and set up your node using our Quick Start Guide. The important settings
+              are: region US, modem preset LONG_FAST, channel LongFast with PSK AQ==, and frequency override 906.875.
             </p>
           </AccordionItem>
-          <AccordionItem name="exclusive" title="Why is keyboard navigation important?">
+          <AccordionItem name="faq" title="What if I don't see any other nodes?">
             <p>
-              Keyboard navigation is essential for users who can't use a mouse, including people with motor
-              disabilities, visual impairments, or those who simply prefer keyboard controls. A website should be fully
-              operable using only a keyboard, with visible focus indicators and logical tab order. This includes being
-              able to access all interactive elements and navigate through content efficiently.
+              Leave your node running for roughly 24 hours and see what it connects to. If nothing shows, take it on a
+              drive — there are currently good pockets of nodes in Evans Town Center and Grovetown off Exit 190.
             </p>
           </AccordionItem>
-          <AccordionItem name="exclusive" title="What is a sufficient color contrast ratio?">
+          <AccordionItem name="faq" title="Do I need a ham radio license?">
             <p>
-              According to WCAG 2.2 AA standards, text should have a minimum contrast ratio of 4.5:1 against its
-              background for regular text, and 3:1 for large text (18pt or 14pt bold). For non-text elements like icons
-              or buttons, a minimum ratio of 3:1 is required. This ensures content is readable for users with visual
-              impairments or color blindness.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="How do I make custom components accessible?">
-            <p>
-              To make custom components accessible, focus on these key aspects: use semantic HTML where possible,
-              implement proper keyboard support, add appropriate ARIA attributes, manage focus when needed, and ensure
-              adequate color contrast. Always test with screen readers and keyboard navigation. Consider using
-              established design patterns from the <Link href="https://www.w3.org/WAI/ARIA/apg/patterns/"
-                >ARIA Authoring Practices Guide</Link
-              >.
+              No license is required to use Meshtastic. The platform uses LoRa in the unlicensed ISM band. However, many
+              of our members are also Amateur Radio operators who bring additional skills and knowledge to the community.
             </p>
           </AccordionItem>
         </Accordion>
       </div>
     </div>
   </section>
+
+  <!-- Join Us -->
   <section class="my-64">
-    <div class="space-content container">
-      <Heading level="h2">Our community</Heading>
+    <div class="space-content container text-center">
+      <Heading level="h2">Want to Join Us?</Heading>
       <p class="text-2xl">
-        We're a community of developers who are passionate about making the web more accessible. We're always looking
-        for new ways to improve the accessibility of the web.
+        Interested in communications? Like to create things? Have questions? Click a link below to join our Discord
+        server or Facebook Group!
       </p>
-      <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-        <Avatar initials="RJ" title="Robert Johnson" subtitle="Manager" />
-        <Avatar initials="MT" title="Maria Torres" subtitle="Developer" />
-        <Avatar initials="AK" title="Alex Kim" subtitle="Designer" />
-        <Avatar initials="SL" title="Sarah Lee" subtitle="Content Strategist" />
-        <Avatar initials="JP" title="James Peterson" subtitle="QA Engineer" />
-        <Avatar initials="LW" title="Lisa Wong" subtitle="Product Owner" />
-        <Avatar initials="DM" title="David Martinez" subtitle="UX Researcher" />
-        <Avatar initials="EB" title="Emma Brown" subtitle="Accessibility Specialist" />
-        <Avatar initials="TC" title="Thomas Chen" subtitle="Frontend Developer" />
-      </AvatarGroup>
-    </div>
-  </section>
-  <section class="mt-64 mb-32">
-    <div class="container">
-      <Heading level="h2" class="mb-16">Impact in numbers</Heading>
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="1.100+" title="Stars" sub="On GitHub" />
-        <Counter count="35+" title="Accessible" sub="Components" />
-        <Counter count="500+" title="Commits" sub="Merged" />
-        <Counter count="48+" title="Months" sub="Since launch" />
+      <div class="flex flex-col gap-3 min-[500px]:flex-row justify-center mt-8">
+        <Link
+          href="https://discord.gg/mgzj2PmhKf"
+          isButton
+          type="primary"
+          animateOnHover
+          animationType="boop"
+          isExternal
+        >
+          <Icon aria-hidden="true" name="lucide:message-circle" size="1.5rem" />
+          Join Discord
+        </Link>
+        <Link
+          href="https://www.facebook.com/share/g/15wMGLcU8Q/"
+          isButton
+          type="secondary"
+          animateOnHover
+          animationType="boop"
+          isExternal
+        >
+          <Icon aria-hidden="true" name="lucide:users" size="1.5rem" />
+          Facebook Group
+        </Link>
+        <Link
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfg5NWMWLGjxHFxQfp-Yk0iuvJNppHfZZy4REmgHj2gQ0OTTw/viewform?usp=sharing"
+          isButton
+          type="secondary"
+          animateOnHover
+          animationType="boop"
+          isExternal
+        >
+          <Icon aria-hidden="true" name="lucide:mail" size="1.5rem" />
+          Contact Us
+        </Link>
       </div>
     </div>
   </section>
 </DefaultLayout>
 
-<style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
+<style lang="scss">
+  .text-gradient {
+    background: linear-gradient(
+      315deg,
+      light-dark(var(--color-primary-300), var(--color-secondary-100)) 25%,
+      light-dark(var(--color-secondary-300), var(--color-primary-200))
+    );
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 </style>

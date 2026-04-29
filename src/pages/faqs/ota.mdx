@@ -1,0 +1,77 @@
+---
+layout: '../../layouts/MarkdownLayout.astro'
+title: OTA Firmware Update
+description: Update nRF52-based Meshtastic nodes wirelessly via Bluetooth using the nRF DFU app — ideal for solar, rooftop, or hard-to-reach installations.
+pageHeader:
+  title: OTA Firmware Update
+  subtitle: Update nRF52 nodes wirelessly via Bluetooth — no physical access required.
+  bgType: bordered
+---
+
+import { Notification } from 'accessible-astro-components'
+
+## What are OTA Firmware Updates?
+
+Some nodes permit firmware updates via OTA (Over-The-Air) Bluetooth connections. This is beneficial for hard-to-reach node placements such as solar, rooftop, or treetop installations.
+
+Not all nodes support OTA updates. Nodes with **nRF52 chipsets** (particularly the **RAK Wisblock RAK4631**) have confirmed OTA support. Research your specific nRF52 variant before attempting.
+
+<Notification type="warning">
+  **IMPORTANT:** Updating firmware can fail and brick devices. Do research and test updates on accessible devices before
+  attempting on difficult-to-reach installations!
+</Notification>
+
+---
+
+## Requirements
+
+- nRF52 node (typically RAK Wisblock RAK4631) — confirm OTA update compatibility via Meshtastic GitHub
+- Android phone or tablet
+- [nRF DFU App by Nordic Semiconductor](https://play.google.com/store/apps/details?id=no.nordicsemi.android.dfu&pcampaignid=web_share) (v4.29.1) from Play Store
+- OTA-compatible firmware from Meshtastic
+- Solid Bluetooth connection maintained throughout the entire process
+
+### Helpful Resources
+
+- [Meshtastic nRF52 OTA Documentation](https://meshtastic.org/docs/getting-started/flashing-firmware/nrf52/ota/)
+- [YouTube OTA Update Guide](https://youtu.be/HzqVUMs_yOg?feature=shared)
+
+---
+
+## Preparing Firmware
+
+1. Visit the [Meshtastic nRF52 OTA page](https://meshtastic.org/docs/getting-started/flashing-firmware/nrf52/ota/)
+2. Navigate to [Meshtastic Downloads](https://meshtastic.org/downloads/) → **Firmware** section
+3. Select Stable, Alpha, or Bleeding version and go to the GitHub releases page
+4. Scroll to **Assets**
+5. Locate `firmware-nrf52840-x.x.x` zip file (exclude variants with "elfs")
+6. Download and unzip
+7. Locate the file for your specific device model with `ota` designation (e.g., RAK4631)
+8. Note the file location for later
+
+---
+
+## OTA Update Process
+
+*(App updated 1/28/26)*
+
+<Notification type="error">
+  **CRITICAL — Back up secure keys and essential node data before proceeding!** Once started, device recovery is
+  impossible without direct physical access.
+</Notification>
+
+1. Disconnect from the target node in the Meshtastic App
+2. Open the nRF DFU App
+3. Under **File** step: Select the previously downloaded OTA firmware file
+4. Verify the filename and size display correctly
+5. Under **Device** step: Select **Select** to open the scanner
+6. Grant Bluetooth permission if requested
+7. App scans for Bluetooth devices
+8. **CAREFULLY** select your target device — verify by name and MAC address. Selecting the wrong device corrupts its firmware.
+9. Under **Progress** step: Select **Start** — upload and installation begin
+10. Monitor progress (expect 3–7 minutes; connection speeds display)
+11. The node will restart after completion — allow several minutes
+12. Connect via Meshtastic App (settings are typically reset during the process)
+13. Reconfigure node settings and restore Security Keys if needed
+
+**Congratulations! OTA Firmware Update completed successfully!**

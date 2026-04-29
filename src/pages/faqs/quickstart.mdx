@@ -1,0 +1,77 @@
+---
+layout: '../../layouts/MarkdownLayout.astro'
+title: Quick Start Guide
+description: Step-by-step instructions to set up your first Meshtastic node and connect to the CSRA Mesh network.
+pageHeader:
+  title: Quick Start Guide
+  subtitle: Set up your first Meshtastic node and join the CSRA Mesh.
+  bgType: bordered
+---
+
+import { Notification } from 'accessible-astro-components'
+
+<Notification type="warning">
+  **!! Make sure you have an antenna on your node before powering it on !!** Never power up your node (radio) without
+  antennas attached — you can burn out your radio. Depending on your node you may need multiple antennas: one for the
+  LoRa radio, one for Bluetooth, and one for GPS if applicable.
+</Notification>
+
+1. **Attach antenna(s) before powering on**
+
+2. **Power up your node**
+
+3. **Open the Meshtastic App on your iOS or Android device**
+
+   > Note: This guide was created using the Android App. The Android & iOS apps are different. An iOS-specific guide will be available soon.
+
+4. **Connect to the node via Bluetooth**
+
+   Use the `+` symbol towards the bottom of the tab with the gear-in-a-box icon and look for your node. Typically only Meshtastic nodes will show as available.
+
+5. **Enter a connection code**
+
+   - On a Meshtastic device with a screen: a 6-digit code will appear on screen — enter this code.
+   - On a Meshtastic device without a screen: enter the code `123456`.
+
+6. **Wait for the node to connect**
+
+   It may take a minute for the node to sync information with the app. Be patient.
+
+7. **Set the region**
+
+   Set the region (shown next to the node name at the top) to **US**.
+
+8. **Open Radio Configuration**
+
+   Select the three dots at the top of the App → **Radio Configuration**
+
+9. **Configure your user name**
+
+   1. Select **User**
+   2. Under **Long name** enter the name you would like for the node
+   3. Under **Short name** enter the 4-digit (or less) short name
+   4. Select **Send** at the bottom — the node may disconnect or restart
+
+10. **Verify channel settings**
+
+    1. Select **Channels**
+    2. Verify that **LongFast** is Channel 0 (there should be no other channels)
+    3. Select Channel 0 **LongFast**
+    4. Verify:
+       - Channel Name: `LongFast`
+       - PSK: `AQ==`
+    5. Select **Save** — the node may disconnect or restart
+
+11. **Verify LoRa settings**
+
+    1. Select **LoRa**
+    2. Verify **Use mode preset** is enabled
+    3. Verify Modem preset is set to **LONG_FAST**
+    4. Verify Frequency Offset is set to `0.0`
+    5. Verify Region is set to **United States** and Hop Limit is set to **5**
+    6. Verify **Override frequency** is set to `906.875`
+    7. Select **Send** — the node may disconnect or restart
+
+**Congratulations!** Your node should now be set up to be found by our mesh. Once your node comes within range of another node with the same settings, they will automatically mesh and begin exchanging information.
+
+> Generally, leave the node alone for roughly 24 hours to see what it can connect to. If you don't see anything within that time frame, take your node on a trip and see if you can find a connection somewhere close by. Currently there are good pockets of nodes in **Evans Town Center** and **Grovetown off Exit 190**.

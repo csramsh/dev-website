@@ -3,21 +3,21 @@ import previewImage from '@assets/img/social-preview-image.png'
 import logoImage from '@assets/img/logo.svg'
 
 export default defineThemeConfig({
-  name: 'Accessible Astro',
-  id: 'accessible-astro-starter',
+  name: 'CSRA Mesh',
+  id: 'csra-mesh',
   logo: logoImage,
   seo: {
-    title: 'Accessible Astro Starter',
+    title: 'CSRA Mesh — Meshtastic Community',
     description:
-      'An Accessible Starter Theme for Astro including several accessibility features and tools to help you build faster.',
-    author: 'Incluud',
-    image: previewImage, // Can also be a string e.g. '/social-preview-image.png',
+      'A Meshtastic enthusiasts community in the Central Savannah River Area (CSRA). Building an off-grid mesh network across Augusta, Evans, Grovetown, North Augusta, Aiken, and beyond.',
+    author: 'CSRA Mesh Community',
+    image: previewImage,
   },
   colors: {
-    primary: '#d648ff',
-    secondary: '#00d1b7',
+    primary: '#2563eb',
+    secondary: '#16a34a',
     neutral: '#b9bec4',
-    outline: '#ff4500',
+    outline: '#f59e0b',
   },
   navigation: {
     darkmode: true,
@@ -29,62 +29,29 @@ export default defineThemeConfig({
       },
       {
         type: 'link',
-        label: 'Blog',
-        href: '/blog',
+        label: 'FAQs & Guides',
+        href: '/faqs',
       },
       {
         type: 'link',
-        label: 'Portfolio',
-        href: '/portfolio',
-      },
-      {
-        label: 'Features',
-        type: 'dropdown',
-        items: [
-          {
-            label: 'Accessibility statement',
-            href: '/accessibility-statement',
-          },
-          {
-            label: 'Accessible components',
-            href: '/accessible-components',
-          },
-          {
-            label: 'Accessible launcher',
-            href: '/accessible-launcher',
-          },
-          {
-            label: 'Color contrast checker',
-            href: '/color-contrast-checker',
-          },
-          {
-            label: 'Markdown page',
-            href: '/markdown-page',
-          },
-          {
-            label: 'MDX page',
-            href: '/mdx-page',
-          },
-          {
-            label: '404 page',
-            href: '/404',
-          },
-          {
-            label: 'Sitemap',
-            href: '/sitemap',
-          },
-        ],
+        label: 'EmComm',
+        href: '/emcomm',
       },
       {
         type: 'link',
-        label: 'Contact',
-        href: '/contact',
+        label: 'Events',
+        href: '/events',
       },
       {
         type: 'link',
-        label: 'Go to our GitHub page, opens in new tab',
-        href: 'https://github.com/incluud/accessible-astro-starter',
-        icon: 'lucide:github',
+        label: 'Links',
+        href: '/links',
+      },
+      {
+        type: 'link',
+        label: 'Join Discord',
+        href: 'https://discord.gg/mgzj2PmhKf',
+        icon: 'lucide:message-circle',
         external: true,
         excludeFromLauncher: true,
       },
@@ -92,19 +59,14 @@ export default defineThemeConfig({
   },
   socials: [
     {
-      label: 'GitHub',
-      href: 'https://github.com/incluud/',
-      icon: 'lucide:github',
+      label: 'Discord',
+      href: 'https://discord.gg/mgzj2PmhKf',
+      icon: 'lucide:message-circle',
     },
     {
-      label: 'Bluesky',
-      href: 'https://bsky.app/profile/incluud.dev',
-      icon: 'lucide:bot-message-square',
-    },
-    {
-      label: 'Open Collective',
-      href: 'https://opencollective.com/incluud',
-      icon: 'lucide:hand-heart',
+      label: 'Facebook',
+      href: 'https://www.facebook.com/share/g/15wMGLcU8Q/',
+      icon: 'lucide:users',
     },
   ],
 })

@@ -10,25 +10,25 @@ import { Icon } from 'astro-icon/components'
 interface Props {
   /**
    * The title text to display
-   * @default "Get this theme on GitHub"
+   * @default "Join us on Discord"
    */
   title?: string
   /**
    * The URL the button should link to
-   * @default "https://github.com/incluud/accessible-astro-starter"
+   * @default "https://discord.gg/mgzj2PmhKf"
    */
   link?: string
   /**
    * The text to display on the button
-   * @default "Get Started"
+   * @default "Join Discord"
    */
   linkText?: string
 }
 
 const {
-  title = 'Get this theme on GitHub',
-  link = 'https://github.com/incluud/accessible-astro-starter',
-  linkText = 'Use this theme',
+  title = 'Join us on Discord',
+  link = 'https://discord.gg/mgzj2PmhKf',
+  linkText = 'Join Discord',
 } = Astro.props
 ---
 
@@ -43,7 +43,7 @@ const {
 </div>
 
 <style lang="scss">
-  @use 'scss/base/mixins' as *;
+  @use '../assets/scss/base/mixins' as *;
 
   .call-to-action {
     position: relative;

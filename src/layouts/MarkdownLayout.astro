@@ -17,8 +17,70 @@ const pageHeader = frontmatter.pageHeader
 >
   {pageHeader && <PageHeader title={pageHeader.title} subtitle={pageHeader.subtitle} bgType={pageHeader.bgType} />}
   <div class={containerClass}>
-    <div class="space-content my-12">
+    <div class="space-content markdown-content my-12">
       <slot />
     </div>
   </div>
 </DefaultLayout>
+
+<style is:global>
+  .markdown-content ol:not([class]) {
+    list-style: none;
+    counter-reset: step;
+    padding-inline-start: 0;
+    margin-inline-start: 0;
+  }
+
+  .markdown-content ol:not([class]) > li {
+    counter-increment: step;
+    position: relative;
+    padding: 0.75rem 1rem 0.75rem 3.25rem;
+    margin-block-end: 0.625rem;
+    border-left: 3px solid light-dark(var(--color-primary-300), var(--color-primary-400));
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    background: light-dark(var(--color-neutral-200), var(--color-neutral-800));
+  }
+
+  .markdown-content ol:not([class]) > li::before {
+    counter-increment: step 0;
+    content: counter(step);
+    position: absolute;
+    left: 0.625rem;
+    top: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: light-dark(var(--color-primary-400), var(--color-primary-300));
+    color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+
+  /* nested lists inside steps keep normal styling */
+  .markdown-content ol:not([class]) > li ul,
+  .markdown-content ol:not([class]) > li ol {
+    margin-top: 0.5rem;
+    margin-inline-start: var(--space-s);
+    padding-inline-start: var(--space-s);
+  }
+
+  .markdown-content ol:not([class]) > li ol {
+    list-style: decimal;
+    counter-reset: none;
+  }
+
+  .markdown-content ol:not([class]) > li ol > li {
+    position: static;
+    padding: 0;
+    margin-block-end: 0.25rem;
+    border-left: none;
+    border-radius: 0;
+    background: none;
+  }
+
+  .markdown-content ol:not([class]) > li ol > li::before {
+    display: none;
+  }
+</style>
