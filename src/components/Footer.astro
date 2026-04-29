@@ -2,6 +2,7 @@
 import CallToAction from './CallToAction.astro'
 import Logo from './Logo.astro'
 import { Heading, Link } from 'accessible-astro-components'
+import { siteUrl } from '@utils/url'
 
 /**
  * Footer Component
@@ -26,11 +27,11 @@ const currentYear = new Date().getFullYear()
       <div class="flex flex-col gap-4">
         <Heading level="h3" size="h6">Pages</Heading>
         <ul class="flex flex-col gap-2">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/faqs">FAQs &amp; Guides</Link></li>
-          <li><Link href="/emcomm">EmComm</Link></li>
-          <li><Link href="/events">Events</Link></li>
-          <li><Link href="/links">Links &amp; Resources</Link></li>
+          <li><Link href={siteUrl('/')}>Home</Link></li>
+          <li><Link href={siteUrl('/faqs')}>FAQs &amp; Guides</Link></li>
+          <li><Link href={siteUrl('/emcomm')}>EmComm</Link></li>
+          <li><Link href={siteUrl('/events')}>Events</Link></li>
+          <li><Link href={siteUrl('/links')}>Links &amp; Resources</Link></li>
         </ul>
       </div>
       <div class="flex flex-col gap-4">
